@@ -1,0 +1,4 @@
+node_modules/
+public/build-info.json
+*.log
+.DS_Store

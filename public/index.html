@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DevOps Bootcamp Starter App</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 640px; margin: 60px auto; padding: 0 20px; color: #182430; }
+    h1 { color: #1A5276; }
+    .card { border: 1px solid #D8DEE3; border-radius: 8px; padding: 16px 20px; margin-top: 20px; }
+    .ok { color: #1D7D4F; font-weight: bold; }
+    code { background: #F6F8FA; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>It's running!</h1>
+  <p>If you can see this page, the script successfully launched an EC2 instance, cloned this repo, installed dependencies, built the app, and started it.</p>
+
+  <div class="card">
+    <strong>Health check:</strong>
+    <div id="health">loading…</div>
+  </div>
+
+  <div class="card">
+    <strong>Build info:</strong>
+    <pre id="build">loading…</pre>
+  </div>
+
+  <script>
+    fetch('/api/health')
+      .then(r => r.json())
+      .then(d => { document.getElementById('health').innerHTML = '<span class="ok">' + d.message + '</span>'; })
+      .catch(() => { document.getElementById('health').textContent = 'Could not reach /api/health'; });
+
+    fetch('/api/build-info')
+      .then(r => r.json())
+      .then(d => { document.getElementById('build').textContent = JSON.stringify(d, null, 2); })
+      .catch(() => { document.getElementById('build').textContent = 'Could not reach /api/build-info'; });
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "devops-bootcamp-starter",
+  "version": "1.0.0",
+  "description": "Minimal starter app for the DevOps Training Programme CI lesson — clone, install, build, run.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
